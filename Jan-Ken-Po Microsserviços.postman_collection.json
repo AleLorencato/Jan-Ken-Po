@@ -1,0 +1,743 @@
+{
+	"info": {
+		"_postman_id": "17decb03-42a1-4371-a5d3-273f7ad97efe",
+		"name": "Jan-Ken-Po Microsserviços",
+		"description": "Coleção completa para testar os microsserviços user-service e match-service do desafio Jan-Ken-Po",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39610653"
+	},
+	"item": [
+		{
+			"name": "MS-USER (Port 8081)",
+			"item": [
+				{
+					"name": "1. Criar Usuário - Player1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player1\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Criar Usuário - Player2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player2\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Criar Usuário - Player3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player3\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Listar Todos os Usuários",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Buscar Usuário por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Buscar Usuário por Username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/users/username/player1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"username",
+								"player1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Atualizar Usuário",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player1_updated\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Deletar Usuário",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/users/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9. [INTERNO] Salvar Resultado da Partida",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player1\",\n  \"matchId\": 1,\n  \"opponent\": \"player2\",\n  \"playerMove\": \"JAN\",\n  \"opponentMove\": \"KEN\",\n  \"result\": \"LOSE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/users/internal/match-result",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"internal",
+								"match-result"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MS-MATCH (Port 8082)",
+			"item": [
+				{
+					"name": "1. Iniciar Partida - Player1 vs Player2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"matchId\", jsonData.matchId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstPlayerUsername\": \"player1\",\n  \"secondPlayerUsername\": \"player2\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/start",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Player1 Faz Jogada - JAN (Pedra)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player1\",\n  \"move\": \"JAN\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/{{matchId}}/move",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"{{matchId}}",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Player2 Faz Jogada - KEN (Tesoura)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player2\",\n  \"move\": \"KEN\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/{{matchId}}/move",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"{{matchId}}",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. [NOVA PARTIDA] Player1 vs Player2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"matchId\", jsonData.matchId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstPlayerUsername\": \"player1\",\n  \"secondPlayerUsername\": \"player2\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/start",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Player1 - PO (Papel)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player1\",\n  \"move\": \"PO\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/{{matchId}}/move",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"{{matchId}}",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Player2 - JAN (Pedra)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player2\",\n  \"move\": \"JAN\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/{{matchId}}/move",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"{{matchId}}",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. [EMPATE] Nova Partida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"matchId\", jsonData.matchId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstPlayerUsername\": \"player1\",\n  \"secondPlayerUsername\": \"player2\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/start",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Player1 - KEN (Tesoura)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player1\",\n  \"move\": \"KEN\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/{{matchId}}/move",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"{{matchId}}",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9. Player2 - KEN (Tesoura) - EMPATE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player2\",\n  \"move\": \"KEN\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/{{matchId}}/move",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"{{matchId}}",
+								"move"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TESTES DE ERRO",
+			"item": [
+				{
+					"name": "1. Iniciar Partida - Usuário Inexistente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstPlayerUsername\": \"player1\",\n  \"secondPlayerUsername\": \"usuarioInexistente\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/start",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Jogada Duplicada - Mesmo Jogador",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player1\",\n  \"move\": \"JAN\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/{{matchId}}/move",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"{{matchId}}",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Jogada com Move Inválido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player1\",\n  \"move\": \"INVALIDO\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/matches/{{matchId}}/move",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"matches",
+								"{{matchId}}",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Criar Usuário - Username Duplicado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"player1\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Buscar Usuário Inexistente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/users/999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VERIFICAR HISTÓRICO",
+			"item": [
+				{
+					"name": "1. Ver Histórico Player1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/users/username/player1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"username",
+								"player1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Ver Histórico Player2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/users/username/player2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"username",
+								"player2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "matchId",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
