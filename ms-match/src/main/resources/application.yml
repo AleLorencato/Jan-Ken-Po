@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: ms-match
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ms-match
+    username: postgres
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8082
+
+feign:
+  user-service:
+    url: http://localhost:8081
